@@ -9,20 +9,19 @@ import java.util.List;
 
 public class ComitImpl implements ComitDAO {
 
-    private JdbcTemplate jdbcTemplate = new JdbcTemplate(JDBCUtils.getDataSource());
+    private  JdbcTemplate jdbcTemplate = new JdbcTemplate(JDBCUtils.getDataSource());
+    Comit comit =  new Comit();
     @Override
     public boolean Comits(Comit comitDo) {
         String sql = "insert into comit(pet,name,gender,location,date,phone,prove)"
-                + "values(?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql,
-                comitDo.getPet(),
-                comitDo.getName(),
-                comitDo.getGender(),
-                comitDo.getLocation(),
-                comitDo.getDate(),
-                comitDo.getPhone(),
-                comitDo.getProve()
-        );
-        return true;
+                +"values(?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql,comitDo.getPet(),
+                            comitDo.getName(),
+                            comitDo.getGender(),
+                            comitDo.getLocation(),
+                            comitDo.getDate(),
+                            comitDo.getPhone(),
+                            comitDo.getProve());
+        return false;
     }
 }

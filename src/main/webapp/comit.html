@@ -17,36 +17,49 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet"/>
     <script src="js/jquery-3.6.0.min.js"></script>
-    <style type="text/css">
+    <style>
         .AutoNewline
         {
             word-break: break-all;/*必須*/
         }
     </style>
-    <script type="text/javascript">
+    <script>
+        function OK(){
+            $.post("CheckServlet/OK", $(this), function (data) {
+                NO()
+
+            });
+
+        function NO(id){
+            $.post("CheckServlet/NO", $(this), function (data) {
+               ;
+            });
+
+            //2.不让页面跳转
+            return false;
+        }
         $(function () {
             $.get("comitServlet/FindAll", {}, function (data) {
                 var lis = "";
                 for (var i = 0; i < data.length; i++) {
                     var li =
-                        '<tr><td class="AutoNewline">' + data[i].pet + '</td>' +
-                        '<td class="AutoNewline">' + data[i].name + '</td>' +
-                        '<td class="AutoNewline">' + data[i].gender + '</td>' +
-                        '<td class="AutoNewline">' + data[i].location + '</td>' +
-                        '<td class="AutoNewline">' + data[i].date + '</td>' +
-                        '<td class="AutoNewline">' + data[i].phone + '</td>' +
-                        '<td class="AutoNewline">' + data[i].prove + '</td>' +
+                        '<tr>' +
+                        '<td><input type="text" name="pet" value ="' + data[i].pet + '"/></td>' +
+                        '<td><input type="text" name="name" value ="' + data[i].name + '"/></td>' +
+                        '<td><input type="text" name="gender" value ="' + data[i].gender + '"/></td>' +
+                        '<td><input type="text" name="location" value ="' + data[i].location + '"/></td>' +
+                        '<td><input type="text" name="date" value ="' + data[i].date + '"/></td>' +
+                        '<td><input type="text" name="phone" value ="' + data[i].phone + '"/></td>' +
+                        '<td><input type="text" name="prove" value ="' + data[i].prove + '"/></td>' +
 
-                        '<td><button type="button" class="btn btn-success">確認</button>\n' +
-                        '<button type="button" class="btn btn-danger">刪除</button></td>' +
+                        '<td><input type="submit" class="submit" value="提交"></a>' +
+                        '<td><a href="CheckServlet/NO?id=' + data[i].id + '" onclick="NO">刪除</a>' +
                         '</tr>'
                     lis += li;
                 }
-                $("#category").append(lis);
+                $("#form1").append(lis);
             });
         })
-
-
     </script>
 
 </head>
@@ -71,7 +84,7 @@
                 </a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                                                      href="comit.html"><h2>
-                    鼠</h2></h></a></li>
+                    鼠</h2></a></li>
             </ul>
         </div>
     </div>
@@ -83,7 +96,7 @@
 
 </header>
 <!--搜尋表單-->
-<form>
+<form id="registerForm" action="user">
     <select class="form-select" aria-label="Default select example">
         <option selected>搜尋選項</option>
         <option value="1">地點</option>
@@ -100,8 +113,14 @@
     </div>
 </form>
 
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+    </div>
+</div>
+
 <div class="" id="ShowBlacklist">
-    <table id="category" style="table-layout:fixed; width:100%; text-align: center" class="table table-bordered table-responsive-md ">
+    <table id="MyTable" style="table-layout:fixed; width:100%; text-align: center"
+           class="table table-bordered table-responsive-md ">
         <th scope="col">寵物型態</th>
         <th class="text-nowrap" scope="col">姓名</th>
         <th scope="col">性別</th>
@@ -113,13 +132,10 @@
 
 
     </table>
+    <form style="table-layout:fixed; width:100%; text-align: center" class="table table-bordered table-responsive-md " id="form1" action="CheckServlet/OK">
+
+    </form>
 </div>
-<div class="row justify-content-center">
-    <div class="col-lg-8 col-xl-7">
-    </div>
-</div>
-</div>
-</section>
 
 <!-- Copyright Section-->
 <div class="copyright py-4 text-center text-white">

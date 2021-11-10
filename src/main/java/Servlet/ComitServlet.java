@@ -29,6 +29,7 @@ public class ComitServlet extends BaseServlet {
         List<Comit> cs = serivce.comitList();
         writeValue(cs,response);
     }
+
     public void ComitS(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> map = request.getParameterMap();
         Comit comitDo = new Comit();

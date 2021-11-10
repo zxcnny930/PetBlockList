@@ -3,23 +3,23 @@ package domain;
 public class BlockList {
     int id ;
     String name;
-    int gender;
+    String gender;
     String locantion;
-     int date;
+    String date;
     int phone;
-    int show;
+    String Prove;
 
     public BlockList() {
     }
 
-    public BlockList(int id, String name, int gender, String locantion, int date, int phone, int show) {
+    public BlockList(int id, String name, String gender, String locantion, String date, int phone, String prove) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.locantion = locantion;
         this.date = date;
         this.phone = phone;
-        this.show = show;
+        Prove = prove;
     }
 
     public int getId() {
@@ -38,11 +38,11 @@ public class BlockList {
         this.name = name;
     }
 
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -54,11 +54,11 @@ public class BlockList {
         this.locantion = locantion;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -70,11 +70,11 @@ public class BlockList {
         this.phone = phone;
     }
 
-    public int getShow() {
-        return show;
+    public String getProve() {
+        return Prove;
     }
 
-    public void setShow(int show) {
-        this.show = show;
+    public void setProve(String prove) {
+        Prove = prove;
     }
 }

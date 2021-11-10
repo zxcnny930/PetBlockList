@@ -12,7 +12,7 @@ public class ComitSerivceimpl implements ComitSerivce {
     public boolean Comits(Comit comitDo) {
 
         if(comitDo.getCheckBox1() != null && comitDo.getPet() != 0){
-            comitDAO.Comits(comitDo);
+            boolean comits = comitDAO.Comits(comitDo);
             return true;
         }
         return false;
