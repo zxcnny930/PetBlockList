@@ -24,11 +24,7 @@ import java.util.Map;
 @WebServlet("/comitServlet/*")
 public class ComitServlet extends BaseServlet {
 
-    private FindAllSerivce serivce = new FindAllSerivceImpl();
-    public void FindAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Comit> cs = serivce.comitList();
-        writeValue(cs,response);
-    }
+
 
     public void ComitS(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> map = request.getParameterMap();
@@ -64,5 +60,9 @@ public class ComitServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(json);
     }
-
+    public FindAllSerivce serivce = new FindAllSerivceImpl();
+    public void FindAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Comit> cs = serivce.comitList();
+        writeValue(cs,response);
+    }
 }

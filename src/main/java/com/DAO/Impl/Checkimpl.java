@@ -16,7 +16,7 @@ public class Checkimpl implements CheckDAO {
         String sql=null;
         if(id==1) {
          sql = "insert into catblackuser(name,gender,locantion,date,phone)"
-                 +"values(?,?,?,?,?,?)";
+                 +"values(?,?,?,?,?)";
             jdbcTemplate.update(sql,
                     comitDo.getName(),
                     comitDo.getGender(),
@@ -28,7 +28,7 @@ public class Checkimpl implements CheckDAO {
         }
         if(id==2) {
             sql = "insert into dogblackuser(name,gender,locantion,date,phone)"
-                    +"values(?,?,?,?,?,?)";
+                    +"values(?,?,?,?,?)";
             jdbcTemplate.update(sql,
                     comitDo.getName(),
                     comitDo.getGender(),
@@ -40,7 +40,7 @@ public class Checkimpl implements CheckDAO {
         }
         if(id==3) {
             sql = "insert into mouseblackuser(name,gender,locantion,date,phone)"
-                    +"values(?,?,?,?,?,?)";
+                    +"values(?,?,?,?,?)";
             jdbcTemplate.update(sql,
                     comitDo.getName(),
                     comitDo.getGender(),

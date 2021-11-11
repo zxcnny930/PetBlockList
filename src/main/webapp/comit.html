@@ -26,13 +26,14 @@
     <script>
         function OK(){
             $.post("CheckServlet/OK", $(this), function (data) {
-                NO()
 
-            });
+
+        })
+        }
 
         function NO(id){
             $.post("CheckServlet/NO", $(this), function (data) {
-               ;
+
             });
 
             //2.不让页面跳转
