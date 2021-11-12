@@ -41,22 +41,21 @@ public class ComitServlet extends BaseServlet {
 
         boolean flag = serivce.Comits(comitDo);
         ResultInfo info = new ResultInfo();
-        //4.响应结果
+
         if(flag){
-            //注册成功
+
             info.setFlag(true);
         }else{
-            //注册失败
+
             info.setFlag(false);
             info.setErrorMsg("注册失败!");
         }
 
-        //将info对象序列化为json
+
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(info);
 
-        //将json数据写回客户端
-        //设置content-type
+
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(json);
     }

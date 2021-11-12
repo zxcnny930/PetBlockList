@@ -8,7 +8,7 @@ import domain.Login;
 public class LoginServiceImpl implements LoginService {
     LoginDao dao = new LoginDaoImpl();
     @Override
-    public boolean Login(Login login) {
+    public Login Login(Login login) {
         return dao.Login(login);
     }
 }

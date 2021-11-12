@@ -19,7 +19,9 @@ public class LoginSerlet extends BaseServlet {
 
 
     public void Login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Map<String, String[]> map = request.getParameterMap();
+
         Login login = new Login();
         try {
             BeanUtils.populate(login,map);
@@ -29,28 +31,30 @@ public class LoginSerlet extends BaseServlet {
             e.printStackTrace();
         }
 
-        LoginService serivce  = new LoginServiceImpl();
+       LoginService service = new LoginServiceImpl();
+        Login u  = service.Login(login);
 
-        boolean flag = serivce.Login(login);
         ResultInfo info = new ResultInfo();
-        //4.响应结果
-        if(flag){
-            //注册成功
-            info.setFlag(true);
-        }else{
-            //注册失败
+
+
+        if(u == null){
+
             info.setFlag(false);
-            info.setErrorMsg("注册失败!");
+            info.setErrorMsg("用户名密码或错误");
         }
 
-        //将info对象序列化为json
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(info);
 
-        //将json数据写回客户端
-        //设置content-type
+        if(u != null){
+            request.getSession().setAttribute("user",u);//登录成功标记
+
+            info.setFlag(true);
+        }
+
+
+        ObjectMapper mapper = new ObjectMapper();
+
         response.setContentType("application/json;charset=utf-8");
-        response.getWriter().write(json);
+        mapper.writeValue(response.getOutputStream(),info);
     }
     }
 
