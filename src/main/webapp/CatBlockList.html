@@ -36,7 +36,8 @@
                         '<td class="AutoNewline">' + data[i].gender + '</td>' +
                         '<td class="AutoNewline">' + data[i].locantion + '</td>' +
                         '<td class="AutoNewline">' + data[i].date + '</td>' +
-                        '<td class="AutoNewline">' + data[i].phone + '</td>'
+                        '<td class="AutoNewline">' + data[i].phone + '</td>' +
+                        '<td class="AutoNewline"><a href="' + data[i].prove + '">連結 </a></td></tr>'
                     lis += li;
                 }
                 $("#category").append(lis);
@@ -110,7 +111,7 @@
         <th scope="col">地點</th>
         <th scope="col">日期</th>
         <th scope="col">手機</th>
-
+        <th scope="col">相關連結</th>
     </table>
 </div>
 <div class="row justify-content-center">

@@ -16,6 +16,7 @@ public class mouseBlockListServlet extends BaseServlet {
 private FindAllSerivce serivce = new FindAllSerivceImpl();
     public void FindAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<BlockList> cs = serivce.mouseFindAll();
+
         writeValue(cs,response);
     }
 }
