@@ -23,10 +23,11 @@
             word-break: break-all;/*必須*/
         }
     </style>
+
     <script>
+
         function OK(){
             $.post("CheckServlet/OK", $(this), function (data) {
-
 
         })
         }
@@ -40,6 +41,7 @@
             return false;
         }
         $(function () {
+
             $.get("comitServlet/FindAll", {}, function (data) {
                 var lis = "";
                 for (var i = 0; i < data.length; i++) {

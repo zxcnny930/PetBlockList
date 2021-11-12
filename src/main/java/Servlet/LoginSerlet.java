@@ -30,7 +30,6 @@ public class LoginSerlet extends BaseServlet {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-
        LoginService service = new LoginServiceImpl();
         Login u  = service.Login(login);
 
@@ -46,8 +45,8 @@ public class LoginSerlet extends BaseServlet {
 
         if(u != null){
             request.getSession().setAttribute("user",u);//登录成功标记
-
             info.setFlag(true);
+            
         }
 
 
